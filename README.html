@@ -633,10 +633,27 @@ functions work:</p>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co"># Test that init_network works</span></span>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a>network <span class="ot">&lt;-</span> <span class="fu">init_network</span>(nodes_test, nodes_test)</span>
 <span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">print</span>(network)</span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co"># Test that compute_centrality works</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">compute_centrality</span>(network, <span class="at">distances =</span> <span class="fu">c</span>(<span class="dv">400</span>, <span class="dv">800</span>), <span class="at">betas =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.005</span>))</span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; &lt;pointer: 0x5b7d920c58b0&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cityseer_network&quot;</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co"># Test that compute_centrality_ works</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">compute_centrality_</span>(network, <span class="at">distances =</span> <span class="fu">c</span>(<span class="dv">400</span>, <span class="dv">800</span>), <span class="at">betas =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.005</span>), <span class="at">type =</span> <span class="st">&quot;closeness&quot;</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="fu">print</span>(result)</span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt; $node_id</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt; [1] 1 2 3</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt; $distances</span></span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt; [1] 400 800</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="co">#&gt; $betas</span></span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a><span class="co">#&gt; [1] 0.010 0.005</span></span>
+<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="co">#&gt; $centrality_type</span></span>
+<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="co">#&gt; [1] &quot;closeness&quot;</span></span>
+<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="co">#&gt; $values</span></span>
+<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="co">#&gt; [1] 7.50 3.75 7.50 3.75 7.50 3.75</span></span></code></pre></div>
 <h2 id="next-steps">Next steps</h2>
 <p>This is a proof-of-concept package. The next steps are:</p>
 <ol style="list-style-type: decimal">

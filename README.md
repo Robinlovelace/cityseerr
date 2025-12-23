@@ -1,8 +1,13 @@
+cityseerr
+================
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-    # Install cityseerr from GitHub
-    # install.packages("pak")
-    pak::pak("Robinlovelace/cityseerr")
+``` r
+# Install cityseerr from GitHub
+# install.packages("pak")
+pak::pak("Robinlovelace/cityseerr")
+```
 
 # cityseerr
 
@@ -15,36 +20,59 @@ urban street networks.
 You can install the development version of cityseerr from
 [GitHub](https://github.com/Robinlovelace/cityseerr) with:
 
-    # install.packages("pak")
-    pak::pak("Robinlovelace/cityseerr")
+``` r
+# install.packages("pak")
+pak::pak("Robinlovelace/cityseerr")
+```
 
 ## Local development
 
 To develop the R package, clone the repo and run:
 
-    devtools::load_all()
+``` r
+devtools::load_all()
+```
 
 ## Quick test
 
 This test verifies that the Rust code compiles and the basic functions
 work:
 
-    library(cityseerr)
+``` r
+library(cityseerr)
 
-    # Create simple test network (in practice, load from file)
-    nodes_test <- data.frame(
-      id = 1:4,
-      x = c(0, 1, 1, 2),
-      y = c(0, 0, 1, 1)
-    )
+# Create simple test network (in practice, load from file)
+nodes_test <- data.frame(
+  id = 1:4,
+  x = c(0, 1, 1, 2),
+  y = c(0, 0, 1, 1)
+)
 
-    # Test that init_network works
-    network <- init_network(nodes_test, nodes_test)
-    print(network)
+# Test that init_network works
+network <- init_network(nodes_test, nodes_test)
+print(network)
+#> <pointer: 0x5b7d920c58b0>
+#> attr(,"class")
+#> [1] "cityseer_network"
 
-    # Test that compute_centrality works
-    result <- compute_centrality(network, distances = c(400, 800), betas = c(0.01, 0.005))
-    print(result)
+# Test that compute_centrality_ works
+result <- compute_centrality_(network, distances = c(400, 800), betas = c(0.01, 0.005), type = "closeness")
+print(result)
+#> $node_id
+#> [1] 1 2 3
+#> 
+#> $distances
+#> [1] 400 800
+#> 
+#> $betas
+#> [1] 0.010 0.005
+#> 
+#> $centrality_type
+#> [1] "closeness"
+#> 
+#> $values
+#> [1] 7.50 3.75 7.50 3.75 7.50 3.75
+```
 
 ## Next steps
 
