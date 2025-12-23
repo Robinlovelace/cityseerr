@@ -51,7 +51,7 @@ nodes_test <- data.frame(
 # Test that init_network works
 network <- init_network(nodes_test, nodes_test)
 print(network)
-#> <pointer: 0x5b7d920c58b0>
+#> <pointer: 0x5ed83ea1d810>
 #> attr(,"class")
 #> [1] "cityseer_network"
 
