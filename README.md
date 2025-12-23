@@ -1,13 +1,8 @@
-cityseerr
-================
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-``` r
-# Install cityseerr from GitHub
-# install.packages("pak")
-pak::pak("Robinlovelace/cityseerr")
-```
+    # Install cityseerr from GitHub
+    # install.packages("pak")
+    pak::pak("Robinlovelace/cityseerr")
 
 # cityseerr
 
@@ -20,42 +15,36 @@ urban street networks.
 You can install the development version of cityseerr from
 [GitHub](https://github.com/Robinlovelace/cityseerr) with:
 
-``` r
-# install.packages("pak")
-pak::pak("Robinlovelace/cityseerr")
-```
+    # install.packages("pak")
+    pak::pak("Robinlovelace/cityseerr")
 
 ## Local development
 
 To develop the R package, clone the repo and run:
 
-``` r
-devtools::load_all()
-```
+    devtools::load_all()
 
 ## Quick test
 
 This test verifies that the Rust code compiles and the basic functions
 work:
 
-``` r
-library(cityseerr)
+    library(cityseerr)
 
-# Create simple test network (in practice, load from file)
-nodes_test <- data.frame(
-  id = 1:4,
-  x = c(0, 1, 1, 2),
-  y = c(0, 0, 1, 1)
-)
+    # Create simple test network (in practice, load from file)
+    nodes_test <- data.frame(
+      id = 1:4,
+      x = c(0, 1, 1, 2),
+      y = c(0, 0, 1, 1)
+    )
 
-# Test that init_network works
-network <- init_network(nodes_test, nodes_test)
-print(network)
+    # Test that init_network works
+    network <- init_network(nodes_test, nodes_test)
+    print(network)
 
-# Test that compute_centrality works
-result <- compute_centrality(network, distances = c(400, 800), betas = c(0.01, 0.005))
-print(result)
-```
+    # Test that compute_centrality works
+    result <- compute_centrality(network, distances = c(400, 800), betas = c(0.01, 0.005))
+    print(result)
 
 ## Next steps
 
