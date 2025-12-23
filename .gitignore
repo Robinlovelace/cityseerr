@@ -1,0 +1,24 @@
+# R
+.Rhistory
+.RData
+.Ruserdata
+*.rds
+
+# Rust
+src/rust/target/
+src/rust/Cargo.lock
+.cargo/
+vendor/
+
+# Generated files
+src/Makevars
+src/Makevars.win
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.Rproj.user

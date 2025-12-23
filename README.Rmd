@@ -1,0 +1,78 @@
+---
+title: cityseerr
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+```{r setup, eval=FALSE}
+# Install cityseerr from GitHub
+# install.packages("pak")
+pak::pak("Robinlovelace/cityseerr")
+```
+
+# cityseerr
+
+The goal of cityseerr is to provide R bindings to cityseer for computing network centrality, accessibility metrics, and land use analysis on urban street networks.
+
+## Installation
+
+You can install the development version of cityseerr from [GitHub](https://github.com/Robinlovelace/cityseerr) with:
+
+```{r, eval=FALSE}
+# install.packages("pak")
+pak::pak("Robinlovelace/cityseerr")
+```
+
+## Local development
+
+To develop the R package, clone the repo and run:
+
+```{r, eval=FALSE}
+devtools::load_all()
+```
+
+## Quick test
+
+This test verifies that the Rust code compiles and the basic functions work:
+
+```{r test, eval=FALSE}
+library(cityseerr)
+
+# Create simple test network (in practice, load from file)
+nodes_test <- data.frame(
+  id = 1:4,
+  x = c(0, 1, 1, 2),
+  y = c(0, 0, 1, 1)
+)
+
+# Test that init_network works
+network <- init_network(nodes_test, nodes_test)
+print(network)
+
+# Test that compute_centrality works
+result <- compute_centrality(network, distances = c(400, 800), betas = c(0.01, 0.005))
+print(result)
+```
+
+## Next steps
+
+This is a proof-of-concept package. The next steps are:
+
+1. Test the full build process with `R CMD build cityseerr`
+2. Fix any compilation issues
+3. Publish to GitHub
+4. Open an issue on cityseer asking about R integration
+
+## Contributing
+
+Contributions are welcome! Please see the GitHub repository for details.

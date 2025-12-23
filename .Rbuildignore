@@ -1,0 +1,11 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^src/rust/target$
+^src/rust/vendor$
+^src/rust/vendor\.tar\.xz$
+^src/rust/Cargo\.lock$
+^\.cargo$
+README\.md$
+^README\.Rmd$
+^data-raw$
+^LICENSE\.md$

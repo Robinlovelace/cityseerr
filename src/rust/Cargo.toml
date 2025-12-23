@@ -1,0 +1,22 @@
+[package]
+name = "cityseerr"
+version = "0.1.0"
+description = "R bindings to cityseer for urban network analysis"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["staticlib"]
+name = "cityseerr"
+
+[dependencies]
+extendr-api = "0.7"
+# cityseer from benchmark-urbanism - comment out for local development
+cityseer = { git = "https://github.com/benchmark-urbanism/cityseer" }
+
+[patch.crates-io]
+extendr-api = { git = "https://github.com/extendr/extendr", rev = "2c2749f5e9d13d5628399c8779c47d420246a4a1" }
+
+# Uncomment for local development of cityseer
+# [patch."https://github.com/benchmark-urbanism/cityseer"]
+# cityseer = { path = "../../../benchmark-urbanism/cityseer" }

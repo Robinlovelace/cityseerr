@@ -1,0 +1,24 @@
+Package: cityseerr
+Title: R Interface to Cityseer for Urban Network Analysis
+Version: 0.1.0
+Authors@R: 
+    person("Robin", "Lovelace", , "rob00x@gmail.com", role = c("aut", "cre"))
+Description: R bindings to cityseer for computing network centrality, 
+    accessibility metrics, and land use analysis on urban street networks.
+    Uses Rust core from benchmark-urbanism/cityseer for high-performance
+    computations.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Language: en
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Config/rextendr/version: 0.4.2
+SystemRequirements: Cargo (rustc package manager)
+Imports: 
+    sf,
+    wk,
+    rlang,
+    dplyr,
+    tibble
+Remotes: 
+    benchmark-urbanism/cityseer

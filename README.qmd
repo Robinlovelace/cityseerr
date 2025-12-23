@@ -1,0 +1,100 @@
+---
+format: gfm
+---
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# cityseerr
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of cityseerr is to provide R bindings to cityseer for computing network centrality, accessibility metrics, and land use analysis on urban street networks.
+
+## Installation
+
+You can install the development version of cityseerr from GitHub with:
+
+```{r}
+#| eval: false
+# install.packages("pak")
+pak::pak("Robinlovelace/cityseerr")
+```
+
+## Local development
+
+To develop the R package, clone the repo and run:
+
+```{r}
+#| eval: false
+devtools::load_all()
+```
+
+## Basic example
+
+`cityseerr` uses the concept of preparing a network from sf objects and then computing centrality measures.
+
+```{r example}
+library(cityseerr)
+library(sf)
+
+# Create a simple network (in practice, load from file)
+nodes <- sf::st_as_sf(data.frame(
+  id = 1:4,
+  x = c(0, 1, 1, 2),
+  y = c(0, 0, 1, 1)
+), coords = c("x", "y"), crs = 27700)
+
+edges <- sf::st_as_sf(data.frame(
+  from = c(1, 2, 2, 3, 3, 4),
+  to = c(2, 1, 3, 2, 4, 3),
+  geom = c(
+    "LINESTRING (0 0, 1 0)",
+    "LINESTRING (1 0, 0 0)",
+    "LINESTRING (1 0, 1 1)",
+    "LINESTRING (1 1, 1 0)",
+    "LINESTRING (1 1, 2 1)",
+    "LINESTRING (2 1, 1 1)"
+  ),
+  wkt = c(
+    "LINESTRING (0 0, 1 0)",
+    "LINESTRING (1 0, 0 0)",
+    "LINESTRING (1 0, 1 1)",
+    "LINESTRING (1 1, 1 0)",
+    "LINESTRING (1 1, 2 1)",
+    "LINESTRING (2 1, 1 1)"
+  )
+))
+edges$geom <- sf::st_as_sfc(edges$wkt)
+edges$geom <- sf::st_sf(geometry = sf::st_as_sfc(edges$wkt), crs = 27700)
+edges <- edges[, "geom", drop = FALSE]
+sf::st_crs(edges) <- 27700
+
+# Prepare the network
+network <- prepare_network(nodes, edges)
+
+# Compute centrality
+centrality <- compute_centrality(network, distances = c(400, 800), type = "betweenness")
+```
+
+## Next steps
+
+This is a proof-of-concept package. The next steps are:
+
+1. Test the build process
+2. Fix any compilation issues
+3. Publish to GitHub
+4. Open an issue on cityseer asking about R integration
+
+## Contributing
+
+Contributions are welcome! Please see the GitHub repository for details.
